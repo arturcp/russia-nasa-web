@@ -1,0 +1,21 @@
+<% if @date %>
+  <h1>
+    Data escolhida: <%= @date %>
+  </h1>
+<% end %>
+
+<br />
+<%= form_with method: :get, url: home_index_path, local: true do |form| %>
+  <%= form.label 'date', 'Data' %>
+  <%= form.date_field :date, value: @date %>
+  <%= form.submit 'Verificar', class: 'btn btn-primary' %>
+<% end %>
+
+<% if @result %>
+  <br />
+  <hr>
+  <br />
+  <h2>Is it holiday on Russia? <%= @result['is_it_a_holiday_on_russia'] %></h2>
+
+  <%= image_tag @result['image'] %>
+<% end %>
