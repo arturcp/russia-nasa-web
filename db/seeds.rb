@@ -10,6 +10,7 @@ Client.destroy_all
 Seller.destroy_all
 Product.destroy_all
 Purchase.destroy_all
+PurchaseProduct.destroy_all
 
 kauan = Client.create!(name: 'Kauan')
 vini = Seller.create!(name: 'Vinicius')
@@ -17,4 +18,6 @@ vini = Seller.create!(name: 'Vinicius')
 coffee = Product.create!(name: 'Café', price: 12.0)
 milk = Product.create!(name: 'Leite de soja', price: 5.9)
 
-Purchase.create!(client_id: kauan.id, seller_id: vini.id)
+first_purchase = Purchase.create!(client_id: kauan.id, seller_id: vini.id)
+first_purchase.products.create!(product: milk)
+first_purchase.products.create!(product: coffee)
