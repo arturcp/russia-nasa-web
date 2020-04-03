@@ -9,6 +9,7 @@ class RussiaAPI
     #
     # CACHE[date]
     #
+    # Date format: 2020-03-01
     Rails.cache.fetch(date) do
       response = client.get(url(date))
       JSON.parse(response)
